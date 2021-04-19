@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="176dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/golla" />
 
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="You are Welcome !"
+        android:text=""
         android:textAllCaps="true"
         android:textColor="#141172"
         android:textSize="30sp"

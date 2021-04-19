@@ -37,7 +37,7 @@ public class TroubleActivity extends AppCompatActivity {
 
     public void sendmail() {
         Intent intent = new Intent(Intent.ACTION_SEND);
-        String[] recipients = {"myday@gmail.com"};
+        String[] recipients = {"ExpiryTracker@gmail.com"};
         intent.putExtra(Intent.EXTRA_EMAIL, recipients);
         intent.putExtra(Intent.EXTRA_SUBJECT, "Sign In/Up Problem");
         intent.putExtra(Intent.EXTRA_TEXT, "");

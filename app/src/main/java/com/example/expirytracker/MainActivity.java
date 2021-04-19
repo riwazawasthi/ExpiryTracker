@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setTitle("MY DAY");
+        setTitle("EXPIRY TRACKER");
         setContentView(R.layout.activity_main);
         settvcolor();
         mexamplelist = new ArrayList<>();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         if (firstrun == 0) {
             progressDialog = new ProgressDialog(MainActivity.this);
             progressDialog.setTitle("Loading");
-            progressDialog.setMessage("Getting your tasks...");
+            progressDialog.setMessage("Getting your reminders...");
             progressDialog.show();
             Runnable progressRunnable = new Runnable() {
                 @Override

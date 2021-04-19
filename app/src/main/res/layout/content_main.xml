@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:onClick="onTimetask"
-            android:text="Reminders"
+            android:text="Expiry Reminders"
             android:textSize="20dp">
 
         </TextView>
@@ -71,20 +71,12 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="Awesome! You have no tasks!!!"
+                android:text="No items added"
                 android:textSize="20dp">
 
             </TextView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="Want to add some ?"
-                android:textSize="20dp">
 
-            </TextView>
         </LinearLayout>
     </LinearLayout>
 
