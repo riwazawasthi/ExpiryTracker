@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingTop="20dp"
-            android:text="Forward this link to your friends to download My Day!"
+            android:text="Following is the GitHub link to the Expiry Tracker app:"
             android:textSize="24dp"></TextView>
 
         <TextView
@@ -42,7 +42,7 @@
             android:gravity="center"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="www.github.com/edge555/MyDay"
+            android:text="Enter link here"
             android:textColor="#C5451D"
             android:textSize="24dp"></TextView>
 

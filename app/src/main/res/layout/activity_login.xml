@@ -10,8 +10,8 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="224dp"
+        android:layout_height="127dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/golla" />
 
@@ -48,14 +48,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Show Password" />
+        android:text="SHOW PASSWORD" />
 
     <Button
         android:id="@+id/regbut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="    Ready To Go      "
+        android:text="     SIGN IN     "
         android:textSize="25sp"
 
         android:textStyle="bold" />

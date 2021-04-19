@@ -13,21 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="This app helps you to keep up with your regular tasks"
+        android:text="This app helps you to keep track of expiring items."
         android:textColor="#213BCC"
         android:textSize="28sp"></TextView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="25dp"></LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="You can add,delete tasks in realtime here"
-        android:textColor="#D50000"
-        android:textSize="28sp"></TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="With your account you can get your task in any devices you log in"
+        android:text="Create an account to keep track of your items and view them every time you log in. You can add or delete items."
         android:textColor="#000000"
         android:textSize="28sp"></TextView>
 
@@ -49,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="If find any bug or if you have any suggestions please let us know"
+        android:text="If you encounter any bugs or have any suggestions, please let us know!"
         android:textColor="#E91E63"
         android:textSize="28sp"></TextView>
 
