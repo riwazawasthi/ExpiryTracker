@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "271659133309",
+    "firebase_url": "https://birthdayreminder-311122-default-rtdb.firebaseio.com",
+    "project_id": "birthdayreminder-311122",
+    "storage_bucket": "birthdayreminder-311122.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271659133309:android:4eac64f09ec0494c520414",
+        "android_client_info": {
+          "package_name": "com.example.expirytracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271659133309-c619jpi400kk49038teakam16bs31aho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.expirytracker",
+            "certificate_hash": "5a94ff18c46a4cc234c285657056a449c259db25"
+          }
+        },
+        {
+          "client_id": "271659133309-jb0bqggau0r0nsvekgge8jjtijtro4ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8v6o3Gvl4u250Qx4NsW1n0n48Z_9X6b8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271659133309-jb0bqggau0r0nsvekgge8jjtijtro4ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271659133309:android:0aa7503fe3aa2669520414",
+        "android_client_info": {
+          "package_name": "website.julianrosser.birthdays"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271659133309-k1lk4tfr4k14ke6ac3ja6lm4ettj5kc5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "website.julianrosser.birthdays",
+            "certificate_hash": "5a94ff18c46a4cc234c285657056a449c259db25"
+          }
+        },
+        {
+          "client_id": "271659133309-jb0bqggau0r0nsvekgge8jjtijtro4ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8v6o3Gvl4u250Qx4NsW1n0n48Z_9X6b8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271659133309-jb0bqggau0r0nsvekgge8jjtijtro4ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
