@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/taskadderlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
@@ -29,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:gravity="start"
-            android:hint="Remind me to..."
+            android:hint="Enter item's name"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:textColor="#141172"
@@ -37,49 +38,55 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
     </LinearLayout>
+    -->
+    <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="callcontacts"
+                android:src="@drawable/call" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:onClick="sendmsg"
+                android:src="@drawable/msg" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:onClick="setmic"
+                android:src="@drawable/mic" />
+        </LinearLayout>
+        -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:gravity="end"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="callcontacts"
-            android:src="@drawable/call" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:onClick="sendmsg"
-            android:src="@drawable/msg" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:onClick="setmic"
-            android:src="@drawable/mic" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
         android:orientation="vertical">
+
+        <!--
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,16 +98,24 @@
             android:textStyle="bold">
 
         </TextView>
+        -->
 
         <EditText
             android:id="@+id/adderdes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Add details about task..."
+            android:hint="Item details..."
             android:paddingLeft="15dp">
 
         </EditText>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/capture_image"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:onClick="doProcess"
+        android:text="Scan Expiry Date" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -156,6 +171,7 @@
 
     </LinearLayout>
 
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -184,6 +200,7 @@
         </TextView>
 
     </LinearLayout>
+    -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -238,7 +255,7 @@
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:background="@drawable/adderbutton"
-            android:text="Set"
+            android:text="ADD"
             android:textColor="#000000"
             android:textSize="22sp" />
     </LinearLayout>

@@ -69,8 +69,7 @@ public class Popup extends AppCompatActivity {
             return d;
         }
         String year = d.substring(0, 4), m = d.substring(4, 6), day = d.substring(6, 8);
-        int month = Integer.parseInt(m) + 1;
-        return day + "/" + month + "/" + year;
+        return m + "/" + day + "/" + year;
     }
 
     public String parsetime(String d) {
@@ -83,9 +82,9 @@ public class Popup extends AppCompatActivity {
         if (hr >= 12) {
             pm = true;
             hr %= 12;
-            if (hr == 0)
-                hr = 12;
         }
+        if (hr == 0)
+            hr = 12;
         h = String.valueOf(hr);
         return h + ":" + m + (pm ? " PM" : " AM");
     }

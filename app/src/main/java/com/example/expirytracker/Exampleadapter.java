@@ -36,7 +36,7 @@ public class Exampleadapter extends RecyclerView.Adapter<Exampleadapter.Examplev
             mtitle = itemView.findViewById(R.id.reltitle);
             mtime = itemView.findViewById(R.id.reltime);
             mdate = itemView.findViewById(R.id.reldate);
-            mrep = itemView.findViewById(R.id.relrep);
+//            mrep = itemView.findViewById(R.id.relrep);
             marker = itemView.findViewById(R.id.relmarker);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +70,9 @@ public class Exampleadapter extends RecyclerView.Adapter<Exampleadapter.Examplev
         Exampleitem curitem = mexamplelist.get(position);
         holder.mtitle.setText(curitem.getTitle());
         Process p = new Process();
-        holder.mdate.setText(parsedate(p.incrementmonth(curitem.getDate())));
+        holder.mdate.setText(parsedate(curitem.getDate()));
         holder.mtime.setText(parsetime(curitem.getTime()));
-        holder.mrep.setText(curitem.getRepeat());
+//        holder.mrep.setText(curitem.getRepeat());
         String color = "Black";
         if (curitem.getMarker() != null) {
             color = curitem.getMarker();
@@ -108,8 +108,7 @@ public class Exampleadapter extends RecyclerView.Adapter<Exampleadapter.Examplev
             return d;
         }
         String year = d.substring(0, 4), m = d.substring(4, 6), day = d.substring(6);
-        int month = Integer.parseInt(m);
-        return day + "-" + month + "-" + year;
+        return m + "-" + day + "-" + year;
     }
 
     public String parsetime(String d) {

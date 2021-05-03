@@ -1,23 +1,33 @@
 package com.example.expirytracker;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -34,6 +44,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.text.FirebaseVisionText;
+import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
+import com.joestelmach.natty.DateGroup;
+import com.joestelmach.natty.Parser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -45,12 +61,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -76,6 +95,8 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout notaskll;
     public static int now = 0, firstrun = 0;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -172,9 +193,23 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab.setOnLongClickListener(new View.OnLongClickListener(){
+
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 101);
+                return false;
+            }
+        });
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(intent, 101);
 
                 Intent intent = new Intent(MainActivity.this, TaskAdderActivity.class);
                 intent.putExtra("now", now);
@@ -188,6 +223,104 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data!= null) {
+            Bundle bundle = data.getExtras();
+            //from bundle, extract the image
+            Bitmap bitmap = (Bitmap) bundle.get("data");
+            //set image in imageview
+//        imageView.setImageBitmap(bitmap);
+            //process the image
+            //create a FirebaseVisionImage object from a Bitmap object
+            FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromBitmap(bitmap);
+            //Get an instance of FirebaseVision
+            FirebaseVision firebaseVision = FirebaseVision.getInstance();
+            //Create an instance of FirebaseVisionTextRecognizer
+            FirebaseVisionTextRecognizer firebaseVisionTextRecognizer = firebaseVision.getOnDeviceTextRecognizer();
+            //Create a task to process the image
+            Task<FirebaseVisionText> task = firebaseVisionTextRecognizer.processImage(firebaseVisionImage);
+            //if task is success
+            task.addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onSuccess(FirebaseVisionText firebaseVisionText) {
+
+
+                    String s = firebaseVisionText.getText();
+
+                    Log.d("TAG", "onSuccess: " + s);
+
+                    Parser parser = new Parser();
+                    List<DateGroup> groups = parser.parse(s);
+                    String day_test;
+                    String month_test;
+                    String year_test;
+                    Date default_date = new Date();
+                    LocalDate default_localDate = default_date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    day_test = Integer.toString(default_localDate.getDayOfMonth());
+                    if (default_localDate.getDayOfMonth() <10){
+                        day_test = "0" + day_test;
+                    }
+                    month_test = Integer.toString(default_localDate.getMonthValue());
+                    if (default_localDate.getMonthValue() <10){
+                        month_test = "0" + month_test;
+                    }
+                    year_test = Integer.toString(default_localDate.getYear());
+
+
+
+                    if(groups!=null) {
+                        for(DateGroup group:groups) {
+                            List dates = group.getDates();
+                            Log.d("Riwaz", ""+dates.get(0));
+                            Date date = (Date)dates.get(0);
+                            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                            day_test = Integer.toString(localDate.getDayOfMonth());
+                            month_test = Integer.toString(localDate.getMonthValue());
+                            year_test = Integer.toString(localDate.getYear());
+                            Log.d("Riwaz", "Natty Date: " + month_test + "/" + day_test + "/" + year_test);
+
+                        }
+
+                    }
+
+                    /*
+                    dateFilter d = new dateFilter(s);
+
+
+                    String day = d.getDay();
+                    String month = d.getMonth();
+                    String year = d.getYear();
+                    Log.d("Aamer", "" + day + "/" + month + "/" + year);
+
+                     */
+
+
+                    Intent i = new Intent(MainActivity.this, TaskAdderActivity.class);
+                    i.putExtra("now", now)
+                            .putExtra("year", year_test)
+                            .putExtra("month", month_test)
+                            .putExtra("day", day_test);
+                    //.putExtra("date", month+"/"+day+"/"+year);
+                    startActivity(i);
+//                text.setText(month+"/"+day+"/"+year);
+
+
+                }
+            });
+            //if task fails
+            task.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
     private void refreshTask() {
