@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/feedback"
+    android:background="@drawable/gradient"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".FeedbackActivity">
@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textCapSentences|textMultiLine"
+        android:hint = "Write something here....."
         android:maxLength="2000"
         android:maxLines="10" />
 

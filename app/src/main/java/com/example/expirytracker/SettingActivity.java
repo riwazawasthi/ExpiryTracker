@@ -31,7 +31,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        fullSwitch = findViewById(R.id.fullswitch);
+        //fullSwitch = findViewById(R.id.fullswitch);
         notisoundSwitch = findViewById(R.id.notisoundswitch);
         vibSwitch = findViewById(R.id.vibswitch);
         notishowSwitch = findViewById(R.id.notishowswitch);
@@ -58,12 +58,14 @@ public class SettingActivity extends AppCompatActivity {
                         } else {
                             notisoundSwitch.setChecked(false);
                         }
-                    } else if (key.equals("Fullscreen")) {
+                    /*} else if (key.equals("Fullscreen")) {
                         if (value.equals("True")) {
                             fullSwitch.setChecked(true);
                         } else {
                             fullSwitch.setChecked(false);
                         }
+
+                     */
                     } else if (key.equals("Notification")) {
                         if (value.equals("True")) {
                             notishowSwitch.setChecked(true);

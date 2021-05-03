@@ -89,8 +89,11 @@ public class TaskAdderActivity extends AppCompatActivity {
         if (extras != null) {
             noww = extras.getInt("now");
             adderdatetv = findViewById(R.id.adderdatetv);
-            adderdatetv.setText(extras.getString("month") + "/" + extras.getString("day") + "/" + extras.getString("year"));
-            taskdate = extras.getString("year") + extras.getString("month") + extras.getString("day");
+            if(extras.getString("month")!= null) {
+                adderdatetv.setText(extras.getString("month") + "/" + extras.getString("day") + "/" + extras.getString("year"));
+                taskdate = extras.getString("year") + extras.getString("month") + extras.getString("day");
+            }
+
         }
         adderset = findViewById(R.id.adderset);
         adderset.setOnClickListener(new View.OnClickListener() {

@@ -71,13 +71,15 @@ public class ProfileActivity extends AppCompatActivity {
                 signout();
             }
         });
-        profupgrade = findViewById(R.id.profupgrade);
+/*        profupgrade = findViewById(R.id.profupgrade);
         profupgrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 upgradetopremium();
             }
         });
+
+ */
         profupdate = findViewById(R.id.profupdate);
         profupdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,21 +91,21 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void updateinfo() {
         profname = findViewById(R.id.profname);
-        profmail = findViewById(R.id.profmail);
-        profmail.setMovementMethod(new ScrollingMovementMethod());
+        //profmail = findViewById(R.id.profmail);
+        //profmail.setMovementMethod(new ScrollingMovementMethod());
         profprofession = findViewById(R.id.profprofession);
         profmobile = findViewById(R.id.profmobile);
         String name = profname.getText().toString();
         String profession = profprofession.getText().toString();
         String mobile = profmobile.getText().toString();
-        String mail = profmail.getText().toString();
+        //String mail = profmail.getText().toString();
         FirebaseUser curuser = FirebaseAuth.getInstance().getCurrentUser();
         if (curuser != null) {
             String uid = curuser.getUid();
             db = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Info");
             HashMap<String, String> info = new HashMap<>();
             info.put("Name", name);
-            info.put("Email", mail);
+            //info.put("Email", mail);
             info.put("Profession", profession);
             info.put("Mobile", mobile);
             db.setValue(info);
@@ -143,10 +145,12 @@ public class ProfileActivity extends AppCompatActivity {
                                 profname.setText((CharSequence) childsnap.getValue());
                             }
                         } else if (childsnap.getKey().equals("Email")) {
-                            if (childsnap.getValue() != null) {
+                            /*if (childsnap.getValue() != null) {
                                 profmail = findViewById(R.id.profmail);
                                 profmail.setText((CharSequence) childsnap.getValue());
                             }
+
+                             */
                         } else if (childsnap.getKey().equals("Profession")) {
                             if (childsnap.getValue() != null) {
                                 profprofession = findViewById(R.id.profprofession);
