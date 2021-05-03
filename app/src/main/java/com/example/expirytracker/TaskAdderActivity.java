@@ -97,6 +97,7 @@ public class TaskAdderActivity extends AppCompatActivity {
         }
         adderset = findViewById(R.id.adderset);
         adderset.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 settask();
@@ -185,6 +186,7 @@ public class TaskAdderActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void settask() {
 
 
@@ -209,9 +211,37 @@ public class TaskAdderActivity extends AppCompatActivity {
         try{
             //formatting the dateString to convert it into a Date
             date = sdf.parse(dateString);
+            Log.d("Riwaz", "Expiry Date: " + sdf.format(date));
+
+            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate twoDaysBefore = localDate.minusDays(2);
+            //date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            String day_test = Integer.toString(twoDaysBefore.getDayOfMonth());
+
+            if (twoDaysBefore.getDayOfMonth() <10){
+                day_test = "0" + day_test;
+            }
+            String month_test = Integer.toString(twoDaysBefore.getMonthValue());
+            if (twoDaysBefore.getMonthValue() <10){
+                month_test = "0" + month_test;
+            }
+
+
+            String year_test = Integer.toString(twoDaysBefore.getYear());
+            String temp = day_test + "-" + month_test + "-" + year_test + " " + timeToSet;
+
+            date = sdf.parse(temp);
+            Log.d("Riwaz", "Reminder Date: " + sdf.format(date));
+
+
+
+
+
         }catch(ParseException e){
             e.printStackTrace();
         }
+
+
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
