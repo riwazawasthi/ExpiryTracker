@@ -197,9 +197,6 @@ public class TaskAdderActivity extends AppCompatActivity {
         Random random = new Random();
         int id = random.nextInt(9999 - 1000) + 1000;
 
-        Intent in = new Intent(TaskAdderActivity.this, ReminderBroadcast.class);
-        in.putExtra("rMsg", msg).putExtra("id", id);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(TaskAdderActivity.this, id ,in, 0);
 
         String dayR = ((String) adderdatetv.getText()).substring(3,5);
         String monthR = ((String) adderdatetv.getText()).substring(0,2);
@@ -240,16 +237,6 @@ public class TaskAdderActivity extends AppCompatActivity {
         }catch(ParseException e){
             e.printStackTrace();
         }
-
-
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,
-                calendar.getTimeInMillis(),
-                pendingIntent);
-
 
         boolean flag = true;
         if (taskdate.compareTo(curdate) < 0 && noww != 2) {
@@ -302,6 +289,17 @@ public class TaskAdderActivity extends AppCompatActivity {
                 val.put(fin, info);
                 db.updateChildren(val);
             }
+            Intent in = new Intent(TaskAdderActivity.this, ReminderBroadcast.class);
+            in.putExtra("rMsg", msg).putExtra("id", id).putExtra("fin", fin);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(TaskAdderActivity.this, id ,in, 0);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    pendingIntent);
+
             Intent intent = new Intent(TaskAdderActivity.this, MainActivity.class);
             startActivity(intent);
         }

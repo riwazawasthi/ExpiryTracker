@@ -80,8 +80,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.TreeMap;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView mRecyclerView;
     private Exampleadapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -532,6 +531,7 @@ public class MainActivity extends AppCompatActivity
             int position = viewHolder.getAdapterPosition();
             Exampleitem curitem = mexamplelist.get(position);
             String delid = curitem.getFull();
+            Log.d("TAG", "onSwiped: " + delid);
             FirebaseUser curuser = FirebaseAuth.getInstance().getCurrentUser();
             String uid = curuser.getUid();
             if (now == 2) {
@@ -539,7 +539,9 @@ public class MainActivity extends AppCompatActivity
             } else {
                 db = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Task").child(delid);
             }
-            db.setValue(null);
+//            db.setValue(null);
+            db.removeValue();
+
             mexamplelist.remove(position);
             mAdapter.notifyDataSetChanged();
         }

@@ -83,12 +83,12 @@ public class SettingActivity extends AppCompatActivity {
         });
         ;
 
-        fullSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*fullSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 togglefullscreen();
             }
-        });
+        }); */
 
         notisoundSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

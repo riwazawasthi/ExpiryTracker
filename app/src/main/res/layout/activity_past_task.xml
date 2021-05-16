@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Your previous tasks"
+            android:text="Expired Items"
             android:gravity="center"
             android:textSize="20sp"
             android:layout_weight="6">

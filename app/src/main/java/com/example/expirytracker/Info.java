@@ -71,4 +71,17 @@ public class Info {
     public void setMarker(String marker) {
         this.marker = marker;
     }
+
+    @Override
+    public String toString() {
+        return "Info{" +
+                "title='" + title + '\'' +
+                ", des='" + des + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", repeat='" + repeat + '\'' +
+                ", full='" + full + '\'' +
+                ", marker='" + marker + '\'' +
+                '}';
+    }
 }

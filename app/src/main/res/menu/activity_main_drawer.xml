@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_past"
             android:icon="@drawable/ic_pasttask"
-            android:title="Past Tasks" />
+            android:title="Expired Items" />
         <item
             android:id="@+id/nav_calender"
             android:icon="@drawable/calender"

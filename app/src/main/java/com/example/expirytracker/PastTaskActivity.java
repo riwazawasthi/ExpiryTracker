@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -132,9 +133,11 @@ public class PastTaskActivity extends AppCompatActivity {
             Exampleitem curitem = mexamplelist.get(position);
             String delid = curitem.getFull();
             FirebaseUser curuser = FirebaseAuth.getInstance().getCurrentUser();
+            Log.d("TAG", "onSwiped2: " + delid);
             String uid = curuser.getUid();
             db = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Pasttask").child(delid);
-            db.setValue(null);
+//            db.setValue(null);
+            db.removeValue();
             mexamplelist.remove(position);
             mAdapter.notifyDataSetChanged();
         }
